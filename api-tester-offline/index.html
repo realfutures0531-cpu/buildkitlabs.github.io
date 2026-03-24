@@ -3,149 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Tester Offline</title>
-    <meta name="description" content="Test APIs offline with our powerful tool. Join 50+ early adopters and enhance your development workflow today!">
+    <title>API Tester Offline — Test APIs Without Internet</title>
+    <meta name="description" content="Offline-first API testing tool. Send requests, inspect responses, save collections — no cloud, no account, no internet required.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#6366f1',dark:'#09090b'}}}}</script>
-    <style>body{background:#09090b;color:#f4f4f5}details[open] summary{color:#818cf8}</style>
+    <style>
+        body { background: #09090b; color: #f4f4f5; font-family: -apple-system, 'Inter', system-ui, sans-serif; }
+        .mono { font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace; }
+        .gradient-text { background: linear-gradient(135deg, #818cf8, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        details[open] summary { color: #818cf8; }
+        .mock-window { border: 1px solid #27272a; border-radius: 12px; overflow: hidden; }
+        .mock-titlebar { background: #18181b; padding: 10px 16px; display: flex; gap: 6px; align-items: center; }
+        .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .mock-body { background: #0f0f11; padding: 20px; }
+    </style>
 </head>
 <body class="min-h-screen">
 
-<!-- 1. HERO -->
-<section class="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
-    <p class="text-indigo-400 text-sm font-medium mb-4">Join 50+ early adopters</p>
-    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Test APIs Offline, No Cloud Needed</h1>
-    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">Empower your development with seamless offline API testing.</p>
-    <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/f51c6c11-e3c7-4924-8a48-e1175ce64f8d" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-lg font-medium transition">Start saving hours →</a>
-        <a href="#pricing" class="border border-gray-700 hover:border-gray-500 text-gray-300 px-8 py-3 rounded-lg font-medium transition">View Pricing</a>
+<!-- NAV -->
+<nav class="border-b border-gray-800/50 px-6 py-4">
+    <div class="max-w-5xl mx-auto flex justify-between items-center">
+        <span class="font-semibold text-sm">API Tester Offline</span>
+        <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/f51c6c11-e3c7-4924-8a48-e1175ce64f8d"
+           class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg transition">Get Started</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-4xl mx-auto px-6 pt-20 pb-8 text-center">
+    <p class="text-indigo-400 text-sm mono mb-6">No internet. No cloud. No BS.</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-5 leading-tight">
+        Postman is great.<br>Until your WiFi isn't.
+    </h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+        API Tester Offline runs entirely on your machine. Send requests, inspect responses,
+        save collections — works on planes, in secure networks, and everywhere Postman doesn't.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center mb-4">
+        <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/f51c6c11-e3c7-4924-8a48-e1175ce64f8d"
+           class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-lg font-medium transition">
+            Start Free Trial →
+        </a>
+        <a href="#how" class="border border-gray-700 hover:border-gray-500 text-gray-300 px-8 py-3 rounded-lg font-medium transition">
+            See How It Works
+        </a>
+    </div>
+    <p class="text-gray-600 text-xs">14-day free trial. No credit card required.</p>
+</section>
+
+<!-- PRODUCT MOCKUP -->
+<section class="max-w-3xl mx-auto px-6 py-10">
+    <div class="mock-window">
+        <div class="mock-titlebar">
+            <div class="mock-dot" style="background:#ef4444"></div>
+            <div class="mock-dot" style="background:#eab308"></div>
+            <div class="mock-dot" style="background:#22c55e"></div>
+            <span class="text-gray-500 text-xs ml-3 mono">API Tester Offline</span>
+        </div>
+        <div class="mock-body mono text-sm">
+            <div class="flex gap-3 mb-4">
+                <span class="bg-green-900/40 text-green-400 px-3 py-1 rounded text-xs font-bold">GET</span>
+                <span class="text-gray-300 flex-1 bg-gray-900 px-3 py-1 rounded">https://api.example.com/users</span>
+                <span class="bg-indigo-600 text-white px-4 py-1 rounded text-xs">Send</span>
+            </div>
+            <div class="border-t border-gray-800 pt-3">
+                <div class="flex gap-4 text-xs text-gray-500 mb-3">
+                    <span class="text-indigo-400 border-b border-indigo-400 pb-1">Response</span>
+                    <span>Headers</span>
+                    <span>Cookies</span>
+                    <span>Timeline</span>
+                </div>
+                <div class="bg-gray-900 rounded p-3 text-xs">
+                    <span class="text-green-400">200 OK</span> <span class="text-gray-600">· 142ms · 2.3 KB</span>
+                    <pre class="mt-2 text-gray-300">{
+  "users": [
+    { "id": 1, "name": "Alice", "role": "admin" },
+    { "id": 2, "name": "Bob", "role": "dev" }
+  ],
+  "total": 2
+}</pre>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- 2. PAIN -->
-<section class="max-w-3xl mx-auto px-6 py-12">
-    <h2 class="text-center text-xl font-semibold mb-8 text-gray-300">Sound familiar?</h2>
+<!-- PAIN — why Postman falls short -->
+<section class="max-w-3xl mx-auto px-6 py-14">
+    <h2 class="text-xl font-semibold mb-8 text-center">The problem with cloud-based API tools</h2>
     <div class="space-y-4">
-        <div class="flex items-start gap-3"><span class="text-red-400 text-xl mt-0.5">✗</span><p class="text-gray-300">Frustration with unreliable cloud connections during testing.</p></div>
-<div class="flex items-start gap-3"><span class="text-red-400 text-xl mt-0.5">✗</span><p class="text-gray-300">Inability to test APIs in secure environments without internet access.</p></div>
-<div class="flex items-start gap-3"><span class="text-red-400 text-xl mt-0.5">✗</span><p class="text-gray-300">Limited functionality of cloud-only tools that slow down development.</p></div>
-
+        <div class="flex gap-4 items-start">
+            <span class="text-red-400 text-lg mt-0.5">✕</span>
+            <div>
+                <p class="text-gray-200 font-medium">No internet = no testing.</p>
+                <p class="text-gray-500 text-sm">Postman syncs everything to their cloud. On a plane, in a secure lab, or on bad hotel WiFi — you're stuck.</p>
+            </div>
+        </div>
+        <div class="flex gap-4 items-start">
+            <span class="text-red-400 text-lg mt-0.5">✕</span>
+            <div>
+                <p class="text-gray-200 font-medium">Forced accounts and telemetry.</p>
+                <p class="text-gray-500 text-sm">You just want to send a GET request. Not create an account, verify email, and accept a privacy policy.</p>
+            </div>
+        </div>
+        <div class="flex gap-4 items-start">
+            <span class="text-red-400 text-lg mt-0.5">✕</span>
+            <div>
+                <p class="text-gray-200 font-medium">Pricing that keeps climbing.</p>
+                <p class="text-gray-500 text-sm">Postman went from free to $14/user/month. Insomnia followed. Your API testing bill shouldn't be a line item.</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- 3. SOLUTION / BENEFITS -->
-<section class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="text-center text-2xl font-bold mb-10">A better way</h2>
+<!-- SOLUTION — what this tool does -->
+<section id="how" class="max-w-4xl mx-auto px-6 py-14">
+    <h2 class="text-xl font-semibold mb-10 text-center">What you get</h2>
     <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div class="text-3xl mb-3">⚡</div>
-            <h3 class="text-lg font-semibold mb-2">Boost Productivity</h3>
-            <p class="text-gray-400 text-sm">Eliminate downtime and test APIs anywhere, anytime.</p>
+        <div class="border border-gray-800 rounded-xl p-5">
+            <div class="mono text-indigo-400 text-sm mb-3">01</div>
+            <h3 class="font-medium mb-2">Fully offline</h3>
+            <p class="text-gray-500 text-sm">No internet needed. No cloud sync. Everything stored locally on your machine. Works in air-gapped environments.</p>
         </div>
-<div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div class="text-3xl mb-3">💰</div>
-            <h3 class="text-lg font-semibold mb-2">Enhance Security</h3>
-            <p class="text-gray-400 text-sm">Test in isolated environments without exposing sensitive data.</p>
+        <div class="border border-gray-800 rounded-xl p-5">
+            <div class="mono text-indigo-400 text-sm mb-3">02</div>
+            <h3 class="font-medium mb-2">All HTTP methods</h3>
+            <p class="text-gray-500 text-sm">GET, POST, PUT, PATCH, DELETE. Custom headers, query params, JSON body, form data. Everything you need, nothing you don't.</p>
         </div>
-<div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div class="text-3xl mb-3">🎯</div>
-            <h3 class="text-lg font-semibold mb-2">Simplify Testing</h3>
-            <p class="text-gray-400 text-sm">Streamline your workflow with intuitive offline tools.</p>
+        <div class="border border-gray-800 rounded-xl p-5">
+            <div class="mono text-indigo-400 text-sm mb-3">03</div>
+            <h3 class="font-medium mb-2">Collections & history</h3>
+            <p class="text-gray-500 text-sm">Save requests in collections. Full history with search. Export/import as JSON. Share with your team via git.</p>
         </div>
-
+        <div class="border border-gray-800 rounded-xl p-5">
+            <div class="mono text-indigo-400 text-sm mb-3">04</div>
+            <h3 class="font-medium mb-2">Environment variables</h3>
+            <p class="text-gray-500 text-sm">Switch between dev/staging/prod with one click. Variables in URLs, headers, and body. No more find-and-replace.</p>
+        </div>
+        <div class="border border-gray-800 rounded-xl p-5">
+            <div class="mono text-indigo-400 text-sm mb-3">05</div>
+            <h3 class="font-medium mb-2">Response inspector</h3>
+            <p class="text-gray-500 text-sm">Pretty-printed JSON. Syntax highlighting. Headers, cookies, timing breakdown. Copy any value with one click.</p>
+        </div>
+        <div class="border border-gray-800 rounded-xl p-5">
+            <div class="mono text-indigo-400 text-sm mb-3">06</div>
+            <h3 class="font-medium mb-2">Zero config</h3>
+            <p class="text-gray-500 text-sm">Download. Open. Test. No account creation, no workspace setup, no onboarding wizard. Just works.</p>
+        </div>
     </div>
 </section>
 
-<!-- 4. SOCIAL PROOF -->
-<section class="max-w-3xl mx-auto px-6 py-12 text-center">
-    <div class="bg-gray-900 border border-gray-800 rounded-xl p-8">
-        <p class="text-gray-400 text-sm mb-2">Trusted by early adopters</p>
-        <p class="text-2xl font-bold text-indigo-400">Join 50+ early adopters</p>
+<!-- COMPARISON -->
+<section class="max-w-3xl mx-auto px-6 py-14">
+    <h2 class="text-xl font-semibold mb-8 text-center">Honest comparison</h2>
+    <div class="border border-gray-800 rounded-xl overflow-hidden">
+        <table class="w-full text-sm">
+            <thead class="bg-gray-900">
+                <tr>
+                    <th class="text-left px-4 py-3 text-gray-400"></th>
+                    <th class="px-4 py-3 text-indigo-400">Ours</th>
+                    <th class="px-4 py-3 text-gray-400">Postman</th>
+                    <th class="px-4 py-3 text-gray-400">Insomnia</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+                <tr><td class="px-4 py-2.5 text-gray-300">Works offline</td><td class="px-4 py-2.5 text-center text-green-400">✓</td><td class="px-4 py-2.5 text-center text-gray-600">Limited</td><td class="px-4 py-2.5 text-center text-gray-600">Partial</td></tr>
+                <tr><td class="px-4 py-2.5 text-gray-300">No account needed</td><td class="px-4 py-2.5 text-center text-green-400">✓</td><td class="px-4 py-2.5 text-center text-red-400">✕</td><td class="px-4 py-2.5 text-center text-red-400">✕</td></tr>
+                <tr><td class="px-4 py-2.5 text-gray-300">No telemetry</td><td class="px-4 py-2.5 text-center text-green-400">✓</td><td class="px-4 py-2.5 text-center text-red-400">✕</td><td class="px-4 py-2.5 text-center text-gray-600">Partial</td></tr>
+                <tr><td class="px-4 py-2.5 text-gray-300">Price (per user/mo)</td><td class="px-4 py-2.5 text-center text-green-400 mono">₩39,000</td><td class="px-4 py-2.5 text-center text-gray-400 mono">$14+</td><td class="px-4 py-2.5 text-center text-gray-400 mono">$9+</td></tr>
+                <tr><td class="px-4 py-2.5 text-gray-300">Air-gap compatible</td><td class="px-4 py-2.5 text-center text-green-400">✓</td><td class="px-4 py-2.5 text-center text-red-400">✕</td><td class="px-4 py-2.5 text-center text-red-400">✕</td></tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
-<!-- 5. HOW IT WORKS -->
-<section class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="text-center text-2xl font-bold mb-10">How it works</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-            <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 text-sm font-bold">Download</div>
-            <h3 class="font-semibold mb-1">Get Started Quickly</h3>
-            <p class="text-gray-400 text-sm">Easily install API Tester Offline on your device.</p>
-        </div>
-<div class="text-center">
-            <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 text-sm font-bold">Configure</div>
-            <h3 class="font-semibold mb-1">Set Up Your Tests</h3>
-            <p class="text-gray-400 text-sm">Input your API endpoints and parameters effortlessly.</p>
-        </div>
-<div class="text-center">
-            <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 text-sm font-bold">Run Tests</div>
-            <h3 class="font-semibold mb-1">Analyze Results</h3>
-            <p class="text-gray-400 text-sm">Execute tests and view results instantly without internet.</p>
-        </div>
-
-    </div>
-</section>
-
-<!-- 6. PRICING -->
-<section id="pricing" class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-center text-2xl font-bold mb-10">Simple pricing</h2>
+<!-- PRICING -->
+<section id="pricing" class="max-w-3xl mx-auto px-6 py-14">
+    <h2 class="text-xl font-semibold mb-2 text-center">Pricing</h2>
+    <p class="text-gray-500 text-sm text-center mb-8">14-day free trial on both plans. Cancel anytime.</p>
     <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col">
-            <div class="mb-4">
-                <h3 class="text-lg font-semibold">Basic Plan</h3>
-                <div class="mt-2"><span class="text-3xl font-bold">19</span><span class="text-gray-400">per month</span></div>
+        <!-- Starter -->
+        <div class="border border-gray-800 rounded-xl p-6 flex flex-col">
+            <h3 class="font-semibold mb-1">Starter</h3>
+            <p class="text-gray-500 text-sm mb-4">For individual developers</p>
+            <div class="mb-5">
+                <span class="text-3xl font-bold">₩39,000</span>
+                <span class="text-gray-500">/month</span>
             </div>
-            <ul class="space-y-2 mb-6 flex-1"><li class="flex items-center gap-2 text-sm text-gray-300"><span class="text-green-400">✓</span>Offline testing for up to 10 APIs</li><li class="flex items-center gap-2 text-sm text-gray-300"><span class="text-green-400">✓</span>Basic analytics and reporting</li><li class="flex items-center gap-2 text-sm text-gray-300"><span class="text-green-400">✓</span>Email support</li></ul>
-            <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/f51c6c11-e3c7-4924-8a48-e1175ce64f8d" class="block text-center bg-gray-700 hover:bg-gray-600 text-white py-2.5 rounded-lg text-sm font-medium transition">Start with Basic — ₩39,000/mo</a>
+            <ul class="space-y-2 mb-6 flex-1 text-sm">
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>All HTTP methods</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Unlimited requests</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Collections & history</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Environment variables</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>JSON/XML inspector</li>
+            </ul>
+            <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/f51c6c11-e3c7-4924-8a48-e1175ce64f8d"
+               class="block text-center bg-gray-800 hover:bg-gray-700 text-white py-2.5 rounded-lg text-sm font-medium transition">
+                Start Free Trial
+            </a>
         </div>
-<div class="bg-gray-900 border border-indigo-500 rounded-xl p-6 flex flex-col">
-            <div class="mb-4">
-                <h3 class="text-lg font-semibold">Pro Plan<span class="bg-indigo-600 text-xs px-2 py-0.5 rounded-full ml-2">Popular</span></h3>
-                <div class="mt-2"><span class="text-3xl font-bold">49</span><span class="text-gray-400">per month</span></div>
+        <!-- Pro -->
+        <div class="border border-indigo-500/50 rounded-xl p-6 flex flex-col relative">
+            <span class="absolute -top-3 left-4 bg-indigo-600 text-xs px-2 py-0.5 rounded-full">Most Popular</span>
+            <h3 class="font-semibold mb-1">Pro</h3>
+            <p class="text-gray-500 text-sm mb-4">For teams & power users</p>
+            <div class="mb-5">
+                <span class="text-3xl font-bold">₩69,000</span>
+                <span class="text-gray-500">/month</span>
             </div>
-            <ul class="space-y-2 mb-6 flex-1"><li class="flex items-center gap-2 text-sm text-gray-300"><span class="text-green-400">✓</span>Unlimited API testing</li><li class="flex items-center gap-2 text-sm text-gray-300"><span class="text-green-400">✓</span>Advanced analytics and reporting</li><li class="flex items-center gap-2 text-sm text-gray-300"><span class="text-green-400">✓</span>Priority support</li></ul>
-            <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/d6889836-3750-4933-92c9-5162ce4cdcd4" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-lg text-sm font-medium transition">Go Pro — ₩69,000/mo</a>
+            <ul class="space-y-2 mb-6 flex-1 text-sm">
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Everything in Starter</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Team collection sharing</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>API documentation export</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Pre/post request scripts</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>CI/CD integration (CLI)</li>
+                <li class="flex gap-2 text-gray-300"><span class="text-green-400">✓</span>Priority support</li>
+            </ul>
+            <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/d6889836-3750-4933-92c9-5162ce4cdcd4"
+               class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-lg text-sm font-medium transition">
+                Start Free Trial
+            </a>
         </div>
-
     </div>
-    <p class="text-center text-gray-500 text-xs mt-4">Cancel anytime. No hidden fees.</p>
 </section>
 
-<!-- 7. FAQ -->
-<section class="max-w-2xl mx-auto px-6 py-16">
-    <h2 class="text-center text-2xl font-bold mb-10">FAQ</h2>
+<!-- FAQ -->
+<section class="max-w-2xl mx-auto px-6 py-14">
+    <h2 class="text-xl font-semibold mb-8 text-center">Questions</h2>
     <div class="space-y-3">
         <details class="border border-gray-800 rounded-lg">
-            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">Why is the price higher than cloud tools?</summary>
-            <p class="px-4 pb-3 text-sm text-gray-400">Our offline capabilities provide unmatched reliability and security.</p>
+            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">How is this different from Postman?</summary>
+            <p class="px-4 pb-3 text-sm text-gray-400">Postman requires an account and syncs to their cloud. We don't. Everything stays on your machine. No internet needed, no telemetry, no forced sign-in.</p>
         </details>
-<details class="border border-gray-800 rounded-lg">
-            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">Is my data secure with API Tester Offline?</summary>
-            <p class="px-4 pb-3 text-sm text-gray-400">Yes, your data remains on your device, ensuring maximum security.</p>
+        <details class="border border-gray-800 rounded-lg">
+            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">Can I use it in air-gapped / secure environments?</summary>
+            <p class="px-4 pb-3 text-sm text-gray-400">Yes. That's the whole point. It runs 100% locally. No external connections required for the tool itself. Only your actual API requests go over the network.</p>
         </details>
-<details class="border border-gray-800 rounded-lg">
-            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">What if I find a better alternative?</summary>
-            <p class="px-4 pb-3 text-sm text-gray-400">We offer a 30-day money-back guarantee if you're not satisfied.</p>
+        <details class="border border-gray-800 rounded-lg">
+            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">Can I import my Postman collections?</summary>
+            <p class="px-4 pb-3 text-sm text-gray-400">Yes. Export from Postman as JSON → import into API Tester Offline. Your collections, environments, and variables transfer over.</p>
         </details>
-<details class="border border-gray-800 rounded-lg">
-            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">Can I use it on multiple devices?</summary>
-            <p class="px-4 pb-3 text-sm text-gray-400">Yes, your license allows installation on up to three devices.</p>
+        <details class="border border-gray-800 rounded-lg">
+            <summary class="px-4 py-3 cursor-pointer text-sm font-medium hover:text-indigo-400 transition">What's your refund policy?</summary>
+            <p class="px-4 pb-3 text-sm text-gray-400">14-day free trial, no credit card. If you pay and it's not for you, email us within 30 days for a full refund. No questions.</p>
         </details>
-
     </div>
 </section>
 
-<!-- 8. FINAL CTA + EMAIL SIGNUP -->
-<section id="signup" class="max-w-2xl mx-auto px-6 py-20 text-center">
-    <h2 class="text-2xl font-bold mb-3">Test APIs Offline, No Cloud Needed</h2>
-    <p class="text-gray-400 mb-8">Join before launch price ends</p>
-    <form action="https://formsubmit.co/ggg0531@gmail.com" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+<!-- FINAL CTA -->
+<section class="max-w-2xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-2xl font-bold mb-3">Stop paying for cloud features you don't need.</h2>
+    <p class="text-gray-400 mb-8">Test APIs offline. It's that simple.</p>
+    <a href="https://buildkitlabs.lemonsqueezy.com/checkout/buy/f51c6c11-e3c7-4924-8a48-e1175ce64f8d"
+       class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-lg font-medium transition inline-block">
+        Start 14-Day Free Trial →
+    </a>
+    <p class="text-gray-600 text-xs mt-4">No credit card required.</p>
+</section>
+
+<!-- EMAIL SIGNUP (secondary) -->
+<section class="border-t border-gray-800/50 max-w-2xl mx-auto px-6 py-12 text-center">
+    <p class="text-gray-500 text-sm mb-4">Not ready yet? Get notified when we ship updates.</p>
+    <form action="https://formsubmit.co/ggg0531@gmail.com" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
         <input type="email" name="email" required placeholder="you@email.com"
-               class="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 transition">
+               class="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 transition">
         <button type="submit"
-                class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-lg text-sm font-medium transition whitespace-nowrap">
-            Start saving hours →
+                class="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">
+            Notify Me
         </button>
         <input type="hidden" name="_subject" value="New signup: API Tester Offline">
         <input type="hidden" name="_captcha" value="false">
@@ -153,22 +276,12 @@
         <input type="hidden" name="product" value="api-tester-offline">
         <input type="text" name="_honey" style="display:none">
     </form>
-    <p class="text-gray-600 text-xs mt-3">No spam. Unsubscribe anytime.</p>
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-gray-800 py-8 text-center text-gray-600 text-xs">
-    <p>&copy; 2026 API Tester Offline. All rights reserved.</p>
+<footer class="border-t border-gray-800/50 py-8 text-center text-gray-600 text-xs">
+    <p>© 2026 API Tester Offline · Built by <a href="https://buildkitlabs.lemonsqueezy.com" class="hover:text-gray-400">BuildKit Labs</a></p>
 </footer>
-
-<!-- ANALYTICS STUB -->
-<script>
-// Track signups
-document.querySelector('form')?.addEventListener('submit', function() {
-    if (typeof gtag !== 'undefined') gtag('event', 'signup', {event_category: 'conversion'});
-    if (typeof plausible !== 'undefined') plausible('Signup');
-});
-</script>
 
 </body>
 </html>
